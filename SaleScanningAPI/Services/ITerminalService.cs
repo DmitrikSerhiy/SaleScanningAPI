@@ -8,11 +8,13 @@ namespace SaleScanningAPI.Services
 {
     public interface ITerminalService
     {
+        List<Product> ScannedProducts { get; set; }
+
         void SetPricing();
         IEnumerable<Product> GetRegisteredProducts();
-        IEnumerable<string> GetScannedProducts();
         void Scan(string ProductName);
         void Scan(string[] ProductNames);
         bool IsExist(string ProductName);
+        double CalculateTotal();
     }
 }

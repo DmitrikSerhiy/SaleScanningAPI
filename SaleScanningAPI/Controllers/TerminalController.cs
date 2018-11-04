@@ -9,6 +9,7 @@ using SaleScanningAPI.Services;
 
 namespace SaleScanningAPI.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class TerminalController : ControllerBase
@@ -17,7 +18,8 @@ namespace SaleScanningAPI.Controllers
         public TerminalController(ITerminalService Terminal)
         {
             terminal = Terminal;
-            terminal.SetPricing();
+            if(!TerminalService.IsPriceSet)
+                terminal.SetPricing();
         }
 
         [HttpGet("products", Name = "GetRegisteredProducts")]
@@ -37,10 +39,11 @@ namespace SaleScanningAPI.Controllers
                 return NotFound(GetErrorMessages());
 
             terminal.Scan(productNames);
+            var totalPrice = terminal.CalculateTotal();
 
-
-            return Ok(terminal.GetScannedProducts().ToList());
+            return Ok( new { TotalPrice = totalPrice } );
         }
+
 
         private string GetErrorMessages()
         {

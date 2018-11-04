@@ -1,4 +1,5 @@
-﻿using SaleScanningAPI.Models;
+﻿using SaleScanningAPI.Helpers;
+using SaleScanningAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,10 @@ namespace SaleScanningAPI.Services
     public class TerminalService : ITerminalService
     {
         private static List<Product> registeredProducts = new List<Product>();
+        public List<Product> ScannedProducts { get; set; } = new List<Product>();
+        public static bool IsPriceSet { get; private set; } = false;
 
         private double totalPrice;
-        private List<string> basket;
-        public TerminalService()
-        {
-            basket = new List<string>();
-        }
 
         public void SetPricing()
         {
@@ -50,6 +48,8 @@ namespace SaleScanningAPI.Services
                         HasDiscount = false
                     }
                 });
+
+            IsPriceSet = true;
         }
 
         public IEnumerable<Product> GetRegisteredProducts()
@@ -59,17 +59,36 @@ namespace SaleScanningAPI.Services
 
         public void Scan(string ProductName)
         {
-            basket.Add(ProductName);
+            ScannedProducts.Add((Product)registeredProducts.First(p => p.ProductName == ProductName).Clone());
         }
 
         public void Scan(string[] ProductNames)
         {
-            basket.AddRange(ProductNames);
+            foreach (var productName in ProductNames)
+            {
+                ScannedProducts.Add((Product)registeredProducts.First(p => p.ProductName == productName).Clone());
+            }
         }
 
         public double CalculateTotal()
         {
-            
+            var tempScannedProduct = ScannedProducts;
+            var i = tempScannedProduct.Count() - 1;
+            while (i >= 0)
+            {
+                var product = tempScannedProduct[i];
+                if (DiscountChecker<Product>.Check(product, tempScannedProduct))
+                {
+                    totalPrice += (double)product.DiscountPrice;
+                    RemoveDublicates(ref tempScannedProduct, product.ProductName);
+                    i = tempScannedProduct.Count() - 1;
+                }
+                else
+                {
+                    totalPrice += product.Price;
+                    i--;
+                }
+            }
             return totalPrice;
         }
 
@@ -79,14 +98,14 @@ namespace SaleScanningAPI.Services
             return registeredProducts.Any(p => p.ProductName == ProductName);
         }
 
-        private Product GetProduct(string ProductName)
+        private void RemoveDublicates(ref List<Product> Products, string ProductName)
         {
-            return registeredProducts.First(p => p.ProductName == ProductName);
+            var productType = registeredProducts.First(p => p.ProductName == ProductName);
+            for (int i = 0; i < productType.RequiredAmountForDiscount; i++)
+            {
+                Products.Remove(Products.First(p => p.ProductName == ProductName));
+            }
         }
 
-        public IEnumerable<string> GetScannedProducts()
-        {
-            return basket.ToList();
-        }
     }
 }
