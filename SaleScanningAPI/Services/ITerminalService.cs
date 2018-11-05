@@ -12,6 +12,7 @@ namespace SaleScanningAPI.Services
 
         void SetPricing();
         IEnumerable<Product> GetRegisteredProducts();
+        void RemoveDublicates(ref List<Product> Products, string ProductName);
         void Scan(string ProductName);
         void Scan(string[] ProductNames);
         bool IsExist(string ProductName);

@@ -9,7 +9,7 @@ namespace SaleScanningAPI.Helpers
 {
     public class DiscountChecker<T> where T : IProduct
     {
-        public static bool Check(T ProductToCheck, List<T> ScannedProducts)
+        public static bool IsProductDiscounted(T ProductToCheck, List<T> ScannedProducts)
         {
             if (ProductToCheck.HasDiscount)
             {

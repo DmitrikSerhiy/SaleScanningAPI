@@ -3,7 +3,6 @@ using SaleScanningAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SaleScanningAPI.Services
 {
@@ -77,7 +76,7 @@ namespace SaleScanningAPI.Services
             while (i >= 0)
             {
                 var product = tempScannedProduct[i];
-                if (DiscountChecker<Product>.Check(product, tempScannedProduct))
+                if (DiscountChecker<Product>.IsProductDiscounted(product, tempScannedProduct))
                 {
                     totalPrice += (double)product.DiscountPrice;
                     RemoveDublicates(ref tempScannedProduct, product.ProductName);
@@ -98,7 +97,7 @@ namespace SaleScanningAPI.Services
             return registeredProducts.Any(p => p.ProductName == ProductName);
         }
 
-        private void RemoveDublicates(ref List<Product> Products, string ProductName)
+        public void RemoveDublicates(ref List<Product> Products, string ProductName)
         {
             var productType = registeredProducts.First(p => p.ProductName == ProductName);
             for (int i = 0; i < productType.RequiredAmountForDiscount; i++)
