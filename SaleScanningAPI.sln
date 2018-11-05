@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleScanningAPI", "SaleScanningAPI\SaleScanningAPI.csproj", "{57C83B61-426A-4933-92E8-43BD5B96E979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleScanningAPI_Test", "..\SaleScanningAPI_Test\SaleScanningAPI_Test.csproj", "{DE320FF2-BB41-4AFB-B836-913C9C539C9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleScanningAPI_Test", "SaleScanningAPI_Test\SaleScanningAPI_Test.csproj", "{61AA509B-EB24-4747-AB13-95CE4EA709C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{57C83B61-426A-4933-92E8-43BD5B96E979}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C83B61-426A-4933-92E8-43BD5B96E979}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C83B61-426A-4933-92E8-43BD5B96E979}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE320FF2-BB41-4AFB-B836-913C9C539C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE320FF2-BB41-4AFB-B836-913C9C539C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE320FF2-BB41-4AFB-B836-913C9C539C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE320FF2-BB41-4AFB-B836-913C9C539C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61AA509B-EB24-4747-AB13-95CE4EA709C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AA509B-EB24-4747-AB13-95CE4EA709C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AA509B-EB24-4747-AB13-95CE4EA709C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AA509B-EB24-4747-AB13-95CE4EA709C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
