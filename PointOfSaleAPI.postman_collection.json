@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "a6753757-e199-4af7-8723-08a35c056f9d",
+		"name": "PointOfSaleAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "A B C D A B A",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"A\", \"B\", \"C\", \"D\", \"A\", \"B\", \"A\"]\n"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/terminal/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"terminal",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "C C C C C C C",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n[\"C\", \"C\", \"C\", \"C\", \"C\", \"C\", \"C\"]\n"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/terminal/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"terminal",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A B C D",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"A\", \"B\", \"C\", \"D\"]\n"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/terminal/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"terminal",
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
